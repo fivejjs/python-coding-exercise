@@ -2,6 +2,10 @@ from coding_exercise.domain.model.cable import Cable
 
 
 class Splitter:
+    """
+    Splitter class
+    """
+
     def __validate(self, times: int, cable: Cable):
         """
         Validate split times and cable length

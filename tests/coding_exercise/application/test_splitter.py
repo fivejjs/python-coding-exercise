@@ -22,29 +22,19 @@ def test_should_split_cable_correctly():
 
 
 def test_splitter_validation():
-    with pytest.raises(ValueError):
-        Splitter().split(Cable(10, "coconuts"), 65)
+    assert_that(Splitter().split).raises(ValueError).when_called_with(Cable(10, "coconuts"), 65)
+    
+    assert_that(Splitter().split).raises(ValueError).when_called_with(Cable(10, "coconuts"), -1)
 
-    with pytest.raises(ValueError):
-        Splitter().split(Cable(10, "coconuts"), -1)
+    assert_that(Splitter().split).raises(ValueError).when_called_with(Cable(10, "coconuts"), 0)
 
-    with pytest.raises(ValueError):
-        Splitter().split(Cable(10, "coconuts"), 0)
+    assert_that(Splitter().split).raises(ValueError).when_called_with(Cable(1, "coconuts"), 1)
 
-    with pytest.raises(ValueError):
-        Splitter().split(Cable(1, "coconuts"), 1)
+    assert_that(Splitter().split).raises(ValueError).when_called_with(Cable(1, "coconuts-0"), 1)
 
-    with pytest.raises(ValueError):
-        Splitter().split(Cable(1, "coconuts-0"), 1)
+    assert_that(Splitter().split).raises(ValueError).when_called_with(Cable(0, "coconuts-0"), 1)
 
-    with pytest.raises(ValueError):
-        Splitter().split(Cable(0, "coconuts-0"), 1)
-
-    with pytest.raises(ValueError):
-        Splitter().split(Cable(1025, "coconuts"), 1)
-
-    with pytest.raises(ValueError):
-        Splitter().split(Cable(1025, "coconuts-0"), 1)
+    assert_that(Splitter().split).raises(ValueError).when_called_with(Cable(1025, "coconuts-0"), 1)
 
 
 def test_splitting_with_remainder():
