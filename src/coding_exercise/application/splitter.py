@@ -28,7 +28,7 @@ class Splitter:
 
     def split(self, cable: Cable, times: int) -> list[Cable]:
         """
-        Split a cable into multiple cables of equal length.
+        Split a cable into multiple sub cables of equal length.
 
         Args:
             cable (Cable): The cable to split
