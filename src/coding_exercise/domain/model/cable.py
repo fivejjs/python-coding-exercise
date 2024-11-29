@@ -18,3 +18,6 @@ class Cable:
             return self.length == other.length and self.name == other.name
 
         return False
+
+    def __repr__(self):
+        return f"Cable({self.length}, '{self.name}')"
